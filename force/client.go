@@ -84,6 +84,7 @@ func (forceApi *ForceApi) request(method, path string, params url.Values, payloa
 	req.Header.Set("Content-Type", contentType)
 	req.Header.Set("Accept", responseType)
 	req.Header.Set("Authorization", fmt.Sprintf("%v %v", "Bearer", forceApi.oauth.AccessToken))
+	req.Header.Set("X-SFDC-Session", forceApi.oauth.AccessToken)
 
 	// Send
 	forceApi.traceRequest(req)
